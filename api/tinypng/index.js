@@ -4,7 +4,7 @@ module.exports = async (req, res) => {
   
   const result = await axios({
     method: 'get',
-    url: `https://cn.bing.com/HPImageArchive.aspx?format=js&idx=1&n=1`
+    url: `https://api.tinify.com/shrink`
   })
 
   res.json({

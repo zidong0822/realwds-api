@@ -15,10 +15,11 @@ const allowCors = fn => async (req, res) => {
     }
     return await fn(req, res)
 }
-
 const getTinyPng = async (req, res) => {
+  req.on('data', chunk => {
+    console.log('------data',chunk);
+  })
     const data = req.body;
-    console.log('------',data);
     const result = await axios({
       method: 'POST',
       url: `https://api.tinify.com/shrink`,

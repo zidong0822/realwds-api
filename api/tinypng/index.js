@@ -17,11 +17,13 @@ const allowCors = fn => async (req, res) => {
 }
 const getTinyPng = async (req, res) => {
   const chunks = [];
+  const imageData = []
   req.on('data', chunk => {
     chunks.push(chunk);
   })
   req.on('end',()=>{
-    console.log('------data123',chunks);
+    imageData = Buffer.concat(chunks);
+    console.log('------data123',imageData);
   })
     const data = req.body;
     const result = await axios({

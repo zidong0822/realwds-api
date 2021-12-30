@@ -1,3 +1,4 @@
+const fetch = require('fetch')
 module.exports = async (req, res) => {
   const result = await fetch('https://api.tinify.com/shrink/',{method:'POST',headers:{'Content-type':'application/json','authorization':'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy'},body:JSON.stringify({
     "source": {

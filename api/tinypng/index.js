@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 module.exports = async (req, res) => {
-  const image = req.data;
+  const image = req.body;
   const result = await axios({
     method: 'post',
     url: `https://api.tinify.com/shrink`,

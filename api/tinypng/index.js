@@ -24,9 +24,6 @@ const getTinyPng = async (req, res) => {
  })
  req.on('end', () => {
   let buf = Buffer.concat(msg)
-  console.log('buffer',buf);
- })
-    const data = req.body;
     const result = await axios({
       method: 'POST',
       url: `https://api.tinify.com/shrink`,
@@ -34,12 +31,11 @@ const getTinyPng = async (req, res) => {
         'authorization':'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy',
         'Content-type':'application/json'
       },
-      data:data
+      data: buf
     })
-    res.json({
-      status: 'ok',
-      data: result.data
-    })
+    res.json(result.data)
+ })
+    
   }
 
 module.exports = allowCors(getTinyPng);

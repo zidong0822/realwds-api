@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     method: 'get',
     url: `https://api.tinify.com/shrink`
   })
-
+  console.log('测试结果',result);
   res.json({
     status: 'ok',
     data: result.data

@@ -19,6 +19,14 @@
       "dest": "/api/bing/"
     },
     {
+      "src": "/tinypng",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "Access-Control-Allow-Origin": "*"
+      },
+      "dest": "/api/tinypng/"
+    },
+    {
       "src": "/360/search",
       "headers": {
         "cache-control": "no-cache, no-store, must-revalidate",

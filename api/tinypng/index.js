@@ -17,6 +17,7 @@ const allowCors = fn => async (req, res) => {
 }
 
 const getTinyPng = async (req, res) => {
+    const data = req.body;
     const result = await axios({
       method: 'POST',
       url: `https://api.tinify.com/shrink`,
@@ -24,11 +25,7 @@ const getTinyPng = async (req, res) => {
         'authorization':'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy',
         'Content-type':'application/json'
       },
-      data:JSON.stringify({
-          "source": {
-              "url": "https://tinypng.com/images/panda-happy.png"
-          }
-        })
+      data:data
     })
     res.json({
       status: 'ok',

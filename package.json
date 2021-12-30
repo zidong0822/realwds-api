@@ -7,8 +7,5 @@
     "axios": "^0.21.1"
   },
   "author": "realwds",
-  "license": "ISC",
-  "devDependencies": {
-    "fetch": "^1.1.0"
-  }
+  "license": "ISC"
 }

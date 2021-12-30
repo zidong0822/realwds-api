@@ -1,13 +1,22 @@
-const fetch = require('fetch')
-module.exports = async (req, res) => {
-  const result = await fetch('https://api.tinify.com/shrink/',{method:'POST',headers:{'Content-type':'application/json','authorization':'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy'},body:JSON.stringify({
-    "source": {
-      "url": "https://tinypng.com/images/panda-happy.png"
-    }
-  })}).then(aa=>aa.json()).then(bb=>bb)
+const axios = require('axios')
 
+module.exports = async (req, res) => {
+  const result = await axios({
+    method: 'POST',
+    url: `https://api.tinify.com/shrink`,
+    headers:{
+      'authorization':'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy',
+      'Content-type':'application/json'
+    },
+    data:JSON.stringify({
+        "source": {
+            "url": "https://tinypng.com/images/panda-happy.png"
+        }
+      })
+  })
   res.json({
     status: 'ok',
-    data: result
+    data: result.data
   })
 }
+

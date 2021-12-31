@@ -24,7 +24,12 @@ const getTinyPng = async (req, res) => {
         'authorization':'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy'
       }
     })
-  res.json(result.data);
+    const  image = btoa(new Uint8Array(result.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+    const  base64 = `data:${response.headers['content-type'].toLowerCase()};base64,${image}`;  
+    res.json({
+        status: 'ok',
+        data: base64
+    });
 }
 
 module.exports = allowCors(getTinyPng);

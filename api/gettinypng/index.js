@@ -19,6 +19,7 @@ const getTinyPng = async (req, res) => {
     const url = req.query.url;
     const result = await axios({
       url: url,
+      responseType: 'arraybuffer',
       headers:{
         'authorization':'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy'
       }

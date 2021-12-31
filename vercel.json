@@ -27,6 +27,14 @@
       "dest": "/api/tinypng/"
     },
     {
+      "src": "/gettinypng",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "Access-Control-Allow-Origin": "*"
+      },
+      "dest": "/api/gettinypng/"
+    },
+    {
       "src": "/360/search",
       "headers": {
         "cache-control": "no-cache, no-store, must-revalidate",

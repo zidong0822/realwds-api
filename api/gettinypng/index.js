@@ -24,11 +24,10 @@ const getTinyPng = async (req, res) => {
         'authorization':'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy'
       }
     })
-    const  base64 =  `data:${result.headers['content-type']};base64,${Buffer.from(String.fromCharCode(...new Uint8Array(result.data)), 'binary')
-    .toString('base64')}`
     res.json({
         status: 'ok',
-        data: base64
+        data: result.data,
+        type:result.headers['content-type']
     });
 }
 

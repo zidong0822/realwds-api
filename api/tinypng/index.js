@@ -17,7 +17,6 @@ const allowCors = fn => async (req, res) => {
 }
 const getTinyPng = async (req, res) => {
     const data =  await postImageData(req);
-    console.log('1111111',data);
     const result = await axios({
       method: 'POST',
       url: `https://api.tinify.com/shrink`,
@@ -27,7 +26,33 @@ const getTinyPng = async (req, res) => {
       },
       data:data
     })
-  res.json(result.data);
+    const gcsData = await saveTinyPng(result.data);
+    console.log(gcsData);
+    res.json(result.data);
+}
+
+const saveTinyPng = async (data) => {
+  return new Promise(async (resolve, reject) => {
+  const url = data.output.url;
+  const arr = url.split('/')
+  const name = arr[arr.length - 1];
+  const result = await axios({
+    method: 'POST',
+    url: `${url}`,
+    headers:{
+      'authorization':'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy',
+      'Content-type':'application/json'
+    },
+    data:JSON.stringify({
+        "store" : {
+          "service": "gcs",
+          "gcp_access_token": "ya29.a0ARrdaM-zHGD_147x6L5krgoEdUdGq_NjU6J7A6AdkZXeOgznNkv3vIAjsGhA2cGmQ03DmMHPka0p1SOhrRHZAEdpwqOXVM_1QgJGZFxixCUnCuTtxba5X6Zcq8aI3wiXgPEdWfJ18wPPEbsy_AHnKOPFGnhO",
+          "path": `xiabanba/${name}`
+        }
+      })
+    })
+    resolve(result.data);
+  })
 }
 
 const postImageData = async (req) => {

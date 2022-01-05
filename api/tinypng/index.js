@@ -26,8 +26,8 @@ const getTinyPng = async (req, res) => {
       },
       data:data
     })
-    const gcsData = await saveTinyPng(result.data);
-    console.log(gcsData);
+    //const gcsData = await saveTinyPng(result.data);
+    //console.log(gcsData);
     res.json(result.data);
 }
 

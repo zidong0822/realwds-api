@@ -27,7 +27,7 @@ const getTinyPng = async (req, res) => {
       },
       data:data
     })
-    console.log('123123123',data);
+    console.log('123123123',result);
     res.json(result.data);
 }
 

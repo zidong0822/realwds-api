@@ -27,7 +27,14 @@ const getTinyPng = async (req, res) => {
       },
       data:data
     })
-  res.json(result.data);
+    console.log('123123123',data);
+    res.json(result.data);
+}
+
+const savePngToStorage = async (data) => {
+  return new Promise(async (resolve, reject) => {
+    
+  })
 }
 
 const postImageData = async (req) => {

@@ -17,7 +17,6 @@ const allowCors = fn => async (req, res) => {
 }
 const getTinyPng = async (req, res) => {
   const data = await postImageData(req);
-  console.log('1111111', data);
   const result = await axios({
     method: 'POST',
     url: `https://api.tinify.com/shrink`,
@@ -27,8 +26,8 @@ const getTinyPng = async (req, res) => {
     },
     data: data
   })
+  
   const saveResult =  await savePngToStorage(result.data);
-  console.log('123123123', saveResult);
   res.json(result.data);
 }
 
@@ -48,7 +47,7 @@ const savePngToStorage = async (data) => {
         "store": {
           "service": "gcs",
           "gcp_access_token": "ya29.a0ARrdaM90cGnHiLCgLzW1ZKdVIhybMh67P_Hbp80J90LT3Qwb8ZJrouYIimoJiwtLlQ7kji2Pwwmyrj19gtCrlQG-8wUUnxAytdJlGq_BS70gUW5kteteNuWc2aEAN-qD50Bawscr-Y7bVj3uDea2wRSqCj0G",
-          "path": `bujuan101/${imageName}`
+          "path": `bujuan101/${imageName}.png`
         }
       })
     }).then(result => {

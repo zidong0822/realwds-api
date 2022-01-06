@@ -26,7 +26,7 @@ const getTinyPng = async (req, res) => {
     },
     data: data
   })
-  
+  console.log('result',result);
   const saveResult =  await savePngToStorage(result.data);
   res.json(result.data);
 }

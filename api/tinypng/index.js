@@ -33,8 +33,9 @@ const getTinyPng = async (req, res) => {
 
 const savePngToStorage = async (data) => {
   const imageUrl = data.output.url;
-  const arr = imageUrl.split('/');
-  const imageName = arr[arr.length - 1];
+  const outPutType = data.output.type;
+  const imageName = imageUrl.split('/').pop();
+  const type = outPutType.split('/').pop()
   return new Promise(async (resolve, reject) => {
     axios({
       method: 'POST',
@@ -47,7 +48,7 @@ const savePngToStorage = async (data) => {
         "store": {
           "service": "gcs",
           "gcp_access_token": "ya29.a0ARrdaM90cGnHiLCgLzW1ZKdVIhybMh67P_Hbp80J90LT3Qwb8ZJrouYIimoJiwtLlQ7kji2Pwwmyrj19gtCrlQG-8wUUnxAytdJlGq_BS70gUW5kteteNuWc2aEAN-qD50Bawscr-Y7bVj3uDea2wRSqCj0G",
-          "path": `bujuan101/${imageName}.png`
+          "path": `bujuan101/${imageName}.${type}`
         }
       })
     }).then(result => {

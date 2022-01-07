@@ -47,7 +47,7 @@ const savePngToStorage = async (data) => {
       data: JSON.stringify({
         "store": {
           "service": "gcs",
-          "gcp_access_token": "ya29.a0ARrdaM-S1JPqGCXOGgpslV1dIGVJWmoCtv2LcZp3iEA-qLwFtxyyJKLxQuP3EWWKc2zjXblDORGVzYQhbNMBtGYO21p1iNa1cQhNQdMpQlhVlqHJEwc3r7i7ovIZvtDKrebsRwAlsdgx7tPVKmBDVJgs7sa-",
+          "gcp_access_token": "ya29.a0ARrdaM8FNrLZ29J2mHKdVRDlbCGKQo4cB86PODrOzpyPh3QvZc5sPXvSo8EThVR5Wm6-woTJpLqf-CRcJPDOXaasfHCpcEB5crqfz9itwcXh2P2drl0CuwsbndqMv-GmeaA9WDWCyuZmpvEAN6-cegd13Ega",
           "path": `bujuan101/${name}.${type}`,
           "headers": {
             "Content-Disposition": `attachment; filename=${name}.${type}`

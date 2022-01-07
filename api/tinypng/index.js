@@ -26,15 +26,15 @@ const getTinyPng = async (req, res) => {
     },
     data: data
   })
-  console.log('result',result);
-  const saveResult =  await savePngToStorage(result.data);
+  // console.log('result',result);
+  // const saveResult =  await savePngToStorage(result.data);
   res.json(result.data);
 }
 
 const savePngToStorage = async (data) => {
-  const imageUrl = data.output.url;
+  const outPutUrl = data.output.url;
   const outPutType = data.output.type;
-  const imageName = imageUrl.split('/').pop();
+  const name = outPutUrl.split('/').pop();
   const type = outPutType.split('/').pop()
   return new Promise(async (resolve, reject) => {
     axios({
@@ -48,7 +48,7 @@ const savePngToStorage = async (data) => {
         "store": {
           "service": "gcs",
           "gcp_access_token": "ya29.a0ARrdaM90cGnHiLCgLzW1ZKdVIhybMh67P_Hbp80J90LT3Qwb8ZJrouYIimoJiwtLlQ7kji2Pwwmyrj19gtCrlQG-8wUUnxAytdJlGq_BS70gUW5kteteNuWc2aEAN-qD50Bawscr-Y7bVj3uDea2wRSqCj0G",
-          "path": `bujuan101/${imageName}.${type}`
+          "path": `bujuan101/${name}.${type}`
         }
       })
     }).then(result => {

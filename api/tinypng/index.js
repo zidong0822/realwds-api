@@ -47,8 +47,11 @@ const savePngToStorage = async (data) => {
       data: JSON.stringify({
         "store": {
           "service": "gcs",
-          "gcp_access_token": "ya29.a0ARrdaM90cGnHiLCgLzW1ZKdVIhybMh67P_Hbp80J90LT3Qwb8ZJrouYIimoJiwtLlQ7kji2Pwwmyrj19gtCrlQG-8wUUnxAytdJlGq_BS70gUW5kteteNuWc2aEAN-qD50Bawscr-Y7bVj3uDea2wRSqCj0G",
-          "path": `bujuan101/${name}.${type}`
+          "gcp_access_token": "ya29.a0ARrdaM-S1JPqGCXOGgpslV1dIGVJWmoCtv2LcZp3iEA-qLwFtxyyJKLxQuP3EWWKc2zjXblDORGVzYQhbNMBtGYO21p1iNa1cQhNQdMpQlhVlqHJEwc3r7i7ovIZvtDKrebsRwAlsdgx7tPVKmBDVJgs7sa-",
+          "path": `bujuan101/${name}.${type}`,
+          "headers": {
+            "Content-Disposition": `attachment; filename=${name}.${type}`
+          }
         }
       })
     }).then(result => {

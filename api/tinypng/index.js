@@ -39,7 +39,7 @@ const savePngToStorage = async (data) => {
   return new Promise(async (resolve, reject) => {
     axios({
       method: 'POST',
-      url: imageUrl,
+      url: outPutUrl,
       headers: {
         'authorization': 'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy',
         'Content-type': 'application/json'

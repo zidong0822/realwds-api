@@ -17,18 +17,22 @@ const allowCors = fn => async (req, res) => {
 }
 const getTinyPng = async (req, res) => {
   const data = await postImageData(req);
-  const result = await axios({
-    method: 'POST',
-    url: `https://api.tinify.com/shrink`,
-    headers: {
-      'authorization': 'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy',
-      'Content-type': 'application/json'
-    },
-    data: data
-  })
-  console.log('result',result);
-  //const saveResult =  await savePngToStorage(result.data);
-  res.json(result.data);
+  try {
+    const result = await axios({
+      method: 'POST',
+      url: `https://api.tinify.com/shrink`,
+      headers: {
+        'authorization': 'Basic YXBpOlRQUmg0RlpRWkhQTmpOUW5WTlhYWjNjSnh5eWJGVGgy',
+        'Content-type': 'application/json'
+      },
+      data: data
+    })
+    console.log('result',result);
+    //const saveResult =  await savePngToStorage(result.data);
+    res.json(result.data);
+  }catch(error){
+    console.log('result',error);
+  }
 }
 
 const savePngToStorage = async (data) => {

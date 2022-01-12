@@ -26,6 +26,7 @@ const getTinyPng = async (req, res) => {
       },
       data: data
     }).catch(error=>{
+      console.log('error',error);
       res.json(error.response.data);
     })
     res.json(result.data);

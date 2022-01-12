@@ -16,7 +16,6 @@ const allowCors = fn => async (req, res) => {
   return await fn(req, res)
 }
 const getTinyPng = async (req, res) => {
-  try {
     const data = await postImageData(req);
     const result = await axios({
       method: 'POST',
@@ -26,13 +25,10 @@ const getTinyPng = async (req, res) => {
         'Content-type': 'application/json'
       },
       data: data
+    }).catch(error=>{
+      res.json(error.response.data);
     })
-    console.log('result',result);
-    //const saveResult =  await savePngToStorage(result.data);
     res.json(result.data);
-  }catch(error){
-    console.log('result',error);
-  }
 }
 
 const savePngToStorage = async (data) => {
